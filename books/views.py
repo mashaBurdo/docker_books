@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from . import models
 
-# Create your views here.
+
+def home(request):
+    return HttpResponse("Hello, world. This is my first project")
+
+
+def books(request):
+    books = models.Book.objects.all()
+    return HttpResponse(books)
