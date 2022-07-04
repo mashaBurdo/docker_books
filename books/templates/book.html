@@ -3,14 +3,34 @@
 {% block title %} {{book.name}} {% endblock %}
 
 {% block content %}
-<h1>Название: {{ book.name }}</h1>
-<h2>Автор: {{ book.author }}</h2>
-<h3>Цена: {{ book.price }}</h3>
-<h3>Страниц: {{ book.pages }}</h3>
+<div class="book-info">
+    <h1>Название: {{ book.name }}</h1>
+    <h2>Автор: {{ book.author }}</h2>
+    <h3>Цена: {{ book.price }}</h3>
+    <h3>Страниц: {{ book.pages }}</h3>
+</div>
 <hr/>
 
 {% for review in reviews %}
     <p>{{ review.text }}</p>
 {#    TODO rating#}
 {% endfor %}
+<style>
+.book-info {
+    margin: 10px 100px;
+    text-align: center;
+    background-image: url(https://i.pinimg.com/originals/86/51/5b/86515b0f58b74d1586780ee65e261f02.jpg);
+}
+h1 {
+    color: blue;
+}
+body {
+    background-color: pink;
+}
+p {
+    border: 3px dashed crimson;
+    text-align: center;
+    margin: 20px 100px;
+}
+</style>
 {% endblock %}
