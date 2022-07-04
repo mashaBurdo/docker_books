@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
@@ -13,6 +14,11 @@ class Book(models.Model):
 
 class Review(models.Model):
     text = models.TextField()
+    rating = models.IntegerField(default=3,
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(1)
+        ])
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
     def __str__(self):

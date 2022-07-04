@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Books</title>
-</head>
-<body>
+{% extends "base.html" %}
 
+{% block title %} {{book.name}} {% endblock %}
+
+{% block content %}
 <h1>Название: {{ book.name }}</h1>
 <h2>Автор: {{ book.author }}</h2>
 <h3>Цена: {{ book.price }}</h3>
 <h3>Страниц: {{ book.pages }}</h3>
 <hr/>
 
-</body>
-</html>
+{% for review in reviews %}
+    <p>{{ review.text }}</p>
+{#    TODO rating#}
+{% endfor %}
+{% endblock %}
