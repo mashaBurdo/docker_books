@@ -9,8 +9,14 @@ h1 {
 body {
     background-color: pink;
 }
-p {
-    border: 3px dashed crimson;
+.review-card {
+    display: block;
+    margin: 20px auto;
     text-align: center;
-    margin: 20px 100px;
+}
+.review-card li {
+    background-color: palegoldenrod;
+}
+.container-fluid {
+    background-color: palegoldenrod;
 }

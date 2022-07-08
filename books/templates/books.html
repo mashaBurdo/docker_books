@@ -8,7 +8,7 @@
     <h2>Автор: {{ book.author }}</h2>
     <h3>Цена: {{ book.price }}</h3>
     <h3>Страниц: {{ book.pages }}</h3>
-    <a href="{% url 'book' book_id=book.pk %}">Подробнее</a>
+    <a class="btn btn-outline-dark" href="{% url 'book' book_id=book.pk %}">Подробнее</a>
     <hr/>
 {% endfor %}
 {% endblock %}
