@@ -12,7 +12,6 @@
 <hr/>
 
 {% for review in reviews %}
-    <p>{{ review.text }}</p>
-{#    TODO rating#}
+    <p>{{ review.rating}}/5: {{ review.text }}</p>
 {% endfor %}
 {% endblock %}
