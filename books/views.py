@@ -1,5 +1,6 @@
+from django.db.models import Avg
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
 from . import models
 
@@ -10,12 +11,20 @@ def home(request):
 
 def books(request):
     books = models.Book.objects.all()
-    context = {'books': books}
-    return render(request, 'books.html', context)
+    context = {"books": books}
+    return render(request, "books.html", context)
 
 
 def book(request, book_id):
     book = get_object_or_404(models.Book, id=book_id)
+    reviews_average_rating = models.Review.objects.filter(book=book).aggregate(
+        Avg("rating")
+    )["rating__avg"]
+    print(reviews_average_rating)
     reviews = models.Review.objects.filter(book=book)
-    context = {'book': book, 'reviews': reviews}
-    return render(request, 'book.html', context)
+    context = {
+        "book": book,
+        "reviews": reviews,
+        "reviews_average_rating": reviews_average_rating,
+    }
+    return render(request, "book.html", context)
