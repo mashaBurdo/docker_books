@@ -4,21 +4,27 @@
 {% block title %} {{book.name}} {% endblock %}
 
 {% block content %}
-<div class="book-info">
-    <h1>Название: {{ book.name }}</h1>
-    <h2>Автор: {{ book.author }}</h2>
-    <h2>Рейтинг: {{ reviews_average_rating }}</h2>
-    <h3>Цена: {{ book.price }}</h3>
-    <h3>Страниц: {{ book.pages }}</h3>
-</div>
-<hr/>
-
-{% for review in reviews %}
-<div class="review-card card " style="width: 30rem;">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Рейтинг: {{ review.rating}}/5</li>
-    <li class="list-group-item"> {{ review.text }}</li>
-  </ul>
-</div>
-{% endfor %}
+    <div class="book-info">
+        <h1>Название: {{ book.name }}</h1>
+        <h2>Автор: {{ book.author }}</h2>
+        <h2>Рейтинг: {{ reviews_average_rating }}</h2>
+        <h3>Цена: {{ book.price }}</h3>
+        <h3>Страниц: {{ book.pages }}</h3>
+    </div>
+    <hr/>
+    <div class="review-form">
+        <form action="." method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    {% for review in reviews %}
+        <div class="review-card card " style="width: 30rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Рейтинг: {{ review.rating}}/5</li>
+                <li class="list-group-item"> {{ review.text }}</li>
+            </ul>
+        </div>
+    {% endfor %}
 {% endblock %}
