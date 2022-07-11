@@ -21,5 +21,9 @@ body {
     background-color: palegoldenrod;
 }
 .review-form {
-    margin-left: 35%;
+    margin-left: 40%;
+}
+.review-form input {
+    display: block;
+    margin-bottom: 20px;
 }
