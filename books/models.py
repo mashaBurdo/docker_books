@@ -21,3 +21,13 @@ class Review(models.Model):
 
     def __str__(self):
         return self.text
+
+
+class Shop(models.Model):
+    name = models.CharField(max_length=255)
+    address = models.CharField(max_length=255, null=True, blank=True)
+    books = models.ManyToManyField(Book)
+
+    def __str__(self):
+        return self.name
+
