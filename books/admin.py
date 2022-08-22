@@ -9,7 +9,7 @@ admin.site.register(Shop)
 
 class BookAdmin(admin.ModelAdmin):
     list_display = ('name', 'author', 'price')
-    search_fields = ('name', 'author')
+    search_fields = ('name', 'author', 'price')
 
 
 admin.site.register(Book, BookAdmin)

@@ -1,5 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils import timezone
+
 
 
 class Book(models.Model):
@@ -18,16 +20,16 @@ class Review(models.Model):
         default=3, validators=[MaxValueValidator(5), MinValueValidator(1)]
     )
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.text
 
 
 class Shop(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=256)
     address = models.CharField(max_length=255, null=True, blank=True)
     books = models.ManyToManyField(Book)
 
     def __str__(self):
         return self.name
-

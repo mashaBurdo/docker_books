@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %} {{ shop.name }} {% endblock %}
+
+{% block content %}
+    <div class="shop-info">
+        <h1>Название магазина: {{ shop.name }}</h1>
+        <h2>Адрес: {{ shop.address }}</h2>
+    </div>
+    <h1>Книги</h1>
+    <hr/>
+    {% for book in books %}
+        <h2>Название книги: {{ book.name }}</h2>
+        <h3>Автор: {{ book.author }}</h3>
+        <a class="btn btn-outline-dark" href="{% url 'book' book_id=book.pk %}">Подробнее</a>
+        <hr/>
+    {% endfor %}
+{% endblock %}

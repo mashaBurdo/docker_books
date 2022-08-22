@@ -27,3 +27,8 @@ body {
     display: block;
     margin-bottom: 20px;
 }
+.shop-info {
+    text-align: center;
+    border: 5px solid rebeccapurple;
+    background-color: #aaaaaa;
+}

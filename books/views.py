@@ -13,6 +13,19 @@ def home(request):
     return HttpResponse("Hello, world. This is my first project")
 
 
+def shops(request):
+    shops = models.Shop.objects.all()
+    context = {"shops": shops}
+    return render(request, "shops.html", context)
+
+
+def shop(request, shop_id):
+    shop = get_object_or_404(models.Shop, id=shop_id)
+    books = models.Book.objects.filter(shop=shop)
+    context = {"shop": shop, "books": books}
+    return render(request, "shop.html", context)
+
+
 def books(request):
     books = models.Book.objects.all()
     context = {"books": books}
