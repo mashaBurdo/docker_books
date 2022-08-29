@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Avg, Q
 from django.http import HttpResponse
@@ -94,4 +95,19 @@ def register(request):
     else:
         form = RegistrationForm()
         context = {"form": form, "title": _("Registration")}
+        return render(request, "form.html", context)
+
+
+@login_required
+def add_book(request):
+    if request.method == "POST":
+        form = BookForm(request.POST)
+        if form.is_valid():
+            models.Book.objects.create(**form.cleaned_data)
+            return redirect("books")
+        else:
+            return HttpResponse(_('Invalid form'))
+    else:
+        form = BookForm()
+        context = {"form": form, "title": _("Add book")}
         return render(request, "form.html", context)
