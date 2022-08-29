@@ -10,7 +10,7 @@ from .forms import *
 
 
 def home(request):
-    return HttpResponse("Hello, world. This is my first project")
+    return render(request, "home.html")
 
 
 def shops(request):

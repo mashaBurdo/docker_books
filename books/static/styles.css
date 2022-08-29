@@ -32,3 +32,11 @@ body {
     border: 5px solid rebeccapurple;
     background-color: #aaaaaa;
 }
+.cat-img {
+    width: 450px;
+}
+.cat-img-container {
+    width: fit-content;
+    display: flex;
+    margin: 0 auto;
+}

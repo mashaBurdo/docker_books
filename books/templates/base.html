@@ -19,6 +19,9 @@
             <div class="navbar-nav">
                 <a class="nav-link" href="{% url 'books' %}">Books</a>
             </div>
+            <div class="navbar-nav">
+                <a class="nav-link" href="{% url 'shops' %}">Shops</a>
+            </div>
             {% if not user.is_authenticated %}
                 <div class="navbar-nav">
                     <a class="nav-link" href="{% url 'login' %}">Log in</a>
