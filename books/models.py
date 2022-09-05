@@ -30,6 +30,8 @@ class Shop(models.Model):
     name = models.CharField(max_length=256)
     address = models.CharField(max_length=255, null=True, blank=True)
     books = models.ManyToManyField(Book)
+    start_date = models.DateTimeField(null=True, blank=True)
+    rating = models.IntegerField(default=5)
 
     def __str__(self):
         return self.name
